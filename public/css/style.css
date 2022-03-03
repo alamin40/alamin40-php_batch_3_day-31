@@ -1,0 +1,14 @@
+.h-200 { height: 200px; }
+.h-250 { height: 250px; }
+.h-500 { height: 500px; }
+.bg-lb{
+    background-color: rgba(177, 124, 103, 0.94);
+}
+
+.notice-section
+{
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
