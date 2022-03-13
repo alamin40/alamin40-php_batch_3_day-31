@@ -334,8 +334,8 @@
                             <span>Teacher Module</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="ecommerce-products.html">Add Teacher</a></li>
-                            <li><a href="ecommerce-product-detail.html">Manage Teacher</a></li>
+                            <li><a href="{{route('add-teacher')}}">Add Teacher</a></li>
+                            <li><a href="{{route('manage-teacher')}}">Manage Teacher</a></li>
                         </ul>
                     </li>
 
