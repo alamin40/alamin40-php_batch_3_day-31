@@ -92,7 +92,7 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                        <img class="" src="{{asset('/')}}assets/images/flags/us.jpg" alt="Header Language" height="16">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
 
@@ -180,7 +180,7 @@
                     <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bx bx-bell bx-tada"></i>
-                        <span class="badge badge-danger badge-pill">3</span>
+                        <span class="badge badge-danger badge-pill"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
                          aria-labelledby="page-header-notifications-dropdown">
@@ -266,9 +266,9 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                        <img class="rounded-circle header-profile-user" src="{{asset('/')}}assets/images/users/avatar-1.jpg"
                              alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ml-1">Henry</span>
+                        <span class="d-none d-xl-inline-block ml-1">{{Auth::user()->name}}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -315,6 +315,7 @@
 
                     </li>
 
+                    @if(Auth::user()->id == 1)
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="bx bx-layout"></i>
@@ -325,6 +326,7 @@
                             <li><a href="{{route('manage-user')}}">Manage User</a></li>
                         </ul>
                     </li>
+                    @endif
 
 
 

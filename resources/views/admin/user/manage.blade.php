@@ -7,38 +7,41 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center mb-3">All User</h4>
-
+                        <p class="text-center text-success">{{Session::get('message')}}</p>
 
                         <div class="table-responsive">
-                            <table class="table mb-0">
+                            <table class="table table-bordered table-hover table-dark mb-0">
 
                                 <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                @foreach($users as $user)
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+
+                                        <td>
+
+                                            <div class="row">
+                                                <a href="{{route('edit-user', ['id' => $user->id])}}" class="btn btn-success btn-sm col-md-3 mx-auto">
+                                                    <i class="fa fa-edit "></i>
+                                                </a>
+
+                                                <a href="{{route('delete-user', ['id' => $user->id])}}" class="btn btn-danger btn-sm col-md-3 mx-auto {{$user->id == 1 ? 'disabled' : ''}}">
+                                                    <i class="fa fa-trash "></i>
+                                                </a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
