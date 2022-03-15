@@ -3,42 +3,56 @@
 @section('body')
 
     <div class="row">
-        <div class="col-lg-10 mx-auto">
+        <div class="col-lg-12 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-center mb-3">All Teacher</h4>
-
+                    <h4 class="card-title text-center mb-3">Manage Teacher</h4>
+                    <p class="text-center text-success">{{Session::get('message')}}</p>
 
                     <div class="table-responsive">
-                        <table class="table mb-0">
+                        <table class="table table-bordered table-hover table-dark mb-0">
 
                             <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Full Name</th>
+                                <th>Code</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Address</th>
+                                <th>Image</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @foreach($teachers as $teacher)
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$teacher->name}}</td>
+                                    <td>{{$teacher->code}}</td>
+                                    <td>{{$teacher->email}}</td>
+                                    <td>{{$teacher->mobile}}</td>
+                                    <td>{{$teacher->address}}</td>
+                                    <td><img src="{{asset($teacher->image)}}" alt="" height="50" width="50"></td>
+                                    <td>{{$teacher->status}}</td>
+
+
+                                    <td>
+
+                                        <div class="row">
+                                            <a href="{{route('edit-teacher', ['id' => $teacher->id])}}" class="btn btn-success btn-sm col-md-3 mx-auto">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+
+                                            <a href="{{route('delete-teacher', ['id' => $teacher->id])}}" class="btn btn-danger btn-sm col-md-3 mx-auto">
+                                                <i class="fa fa-trash "></i>
+                                            </a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
