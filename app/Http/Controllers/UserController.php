@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -44,5 +45,14 @@ class UserController extends Controller
     {
         User::updateUser($request, $id);
         return redirect('/manage-user')->with('message', 'User info updated successfully');
+    }
+
+    public function delete($id)
+    {
+        $this->user = User::find($id);
+
+
+        $this->user->delete();
+        return redirect('manage-user')->with('message', 'Deleted Successfully');
     }
 }

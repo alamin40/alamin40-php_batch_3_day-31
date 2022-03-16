@@ -35,7 +35,7 @@
                                     <td>{{$teacher->mobile}}</td>
                                     <td>{{$teacher->address}}</td>
                                     <td><img src="{{asset($teacher->image)}}" alt="" height="50" width="50"></td>
-                                    <td>{{$teacher->status}}</td>
+                                    <td>{{$teacher->status == 1 ? 'Active' : 'Inactive'}}</td>
 
 
                                     <td>

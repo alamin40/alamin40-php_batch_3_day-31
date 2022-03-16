@@ -95,4 +95,6 @@ class TeacherController extends Controller
         $this->teacher->delete();
         return redirect('manage-teacher')->with('message', 'Deleted Successfully');
     }
+
+
 }
