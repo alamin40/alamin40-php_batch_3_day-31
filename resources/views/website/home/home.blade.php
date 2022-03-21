@@ -63,7 +63,7 @@
                                     </h5>
                                     <div>{!! $subject->short_description !!}</div>
                                     <p class="card-text"><small class="text-muted">Started Date: 05/05/22</small></p>
-                                    <a href="{{route('course-detail')}}" class="btn btn-outline-success">Read More</a>
+                                    <a href="{{route('course-detail', ['id' => $subject->id])}}" class="btn btn-outline-success">Read More</a>
                                     <a href="" class="btn btn-outline-info float-end">Apply Now</a>
                                 </div>
                             </div>

@@ -16,8 +16,14 @@ class WebController extends Controller
         return view('website.home.home', ['subjects' => $this->subjects]);
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('website.course.detail');
+        $this->subject = Subject::find($id);
+        return view('website.course.detail' , ['subject' => $this->subject]);
+    }
+
+    public function enroll($id)
+    {
+        return view('website.course.enroll');
     }
 }

@@ -22,7 +22,10 @@ use App\Http\Controllers\AdminCourseController;
 */
 
 Route::get('/', [WebController::class, 'index'])->name('home');
-Route::get('/course-detail', [WebController::class, 'detail'])->name('course-detail');
+Route::get('/course-detail/{id}', [WebController::class, 'detail'])->name('course-detail');
+Route::get('/enroll-now/{id}', [WebController::class, 'enroll'])->name('enroll-now');
+
+
 Route::get('/user-login', [AuthController::class, 'login'])->name('user-login');
 Route::get('/user-register', [AuthController::class, 'register'])->name('user-register');
 Route::post('/new-login', [AuthController::class, 'newLogin'])->name('new-login');
