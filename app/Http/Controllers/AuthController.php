@@ -32,6 +32,7 @@ class AuthController extends Controller
                {
                    Session::put('user_id', $this->user->id);
                    Session::put('user_name', $this->user->name);
+                   Session::put('user_image', $this->user->image);
 
                    return redirect('/teacher-dashboard');
                }
@@ -45,5 +46,14 @@ class AuthController extends Controller
         {
             return redirect()->back()->with('message', 'Email address or status are not oka');
         }
+    }
+
+    public function logout()
+    {
+        Session::forget('user_id');
+        Session::forget('user_name');
+        Session::forget('user_image');
+
+        return redirect('/');
     }
 }

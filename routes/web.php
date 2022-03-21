@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\AdminCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,23 @@ Route::get('/course-detail', [WebController::class, 'detail'])->name('course-det
 Route::get('/user-login', [AuthController::class, 'login'])->name('user-login');
 Route::get('/user-register', [AuthController::class, 'register'])->name('user-register');
 Route::post('/new-login', [AuthController::class, 'newLogin'])->name('new-login');
+Route::post('/user-logout', [AuthController::class, 'logout'])->name('user-logout');
 
 
 Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+
+
+Route::get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
+Route::get('/teacher-dashboard', [SubjectController::class, 'dashboard'])->name('teacher-dashboard');
+Route::get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
+Route::post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
+
+
+
+
+
+
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -46,6 +62,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/new-teacher', [TeacherCo
 Route::middleware(['auth:sanctum', 'verified' ,])->get('/edit-teacher/{id}', [TeacherController::class, 'edit'])->name('edit-teacher');
 Route::middleware(['auth:sanctum', 'verified' ,])->post('/update-teacher/{id}', [TeacherController::class, 'update'])->name('update-teacher');
 Route::middleware(['auth:sanctum', 'verified' ,])->get('/delete-teacher/{id}', [TeacherController::class, 'delete'])->name('delete-teacher');
+
+
+Route::middleware(['auth:sanctum', 'verified' ,])->get('/manage-course', [AdminCourseController::class, 'manage'])->name('manage-course');
+Route::middleware(['auth:sanctum', 'verified' ,])->get('/view-detail/{id}', [AdminCourseController::class, 'detail'])->name('view-detail');
+Route::middleware(['auth:sanctum', 'verified' ,])->get('/update-status/{id}', [AdminCourseController::class, 'updateStatus'])->name('update-status');
 
 
 
